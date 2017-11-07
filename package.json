@@ -17,5 +17,9 @@
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/FACN3/MHHN/issues"
+  },
+  "devDependencies": {
+    "nyc": "^11.3.0",
+    "tape": "^4.8.0"
   }
 }
