@@ -18,7 +18,7 @@ var todoFunctions = {
   //cloneArrayOfObjects will create a copy of the todos array
   //changes to the new array don't affect the original
   cloneArrayOfObjects: function(todos) {
-    return todos.map(function(todo){
+    return todos.map(function(todo) {
       return JSON.parse(JSON.stringify(todo));
     });
   },
@@ -28,7 +28,19 @@ var todoFunctions = {
     // returns a new array, it should contain todos with the newTodo added to the end.
     // add an id to the newTodo. You can use the generateId function to create an id.
     // hint: array.concat
+    // var newlistid = todoFunctions.generateId();
+    // todos.push(newlistid);
+    var newList = {
+                  'id':1,
+                   'description':'eat hotdog',
+                   'done': false
+                 }
+
+    return newList;
+
   },
+
+
   deleteTodo: function(todos, idToDelete) {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // return a new array, this should not contain any todo with an id of idToDelete

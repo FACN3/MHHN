@@ -16,6 +16,9 @@
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
     // you will need to use addEventListener
+  var button = document.getElementById('add');
+
+    button.addEventListener("click", todoFunctions.addTodo(state, todo.id));
 
     // add span holding description
 
