@@ -1,0 +1,21 @@
+{
+  "name": "MHHN",
+  "version": "0.0.0",
+  "description": "A to-do project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FACN3/MHHN.git"
+  },
+  "keywords": [
+    "to-do"
+  ],
+  "author": "hoslack",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/FACN3/MHHN/issues"
+  }
+}
