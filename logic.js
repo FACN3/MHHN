@@ -29,14 +29,14 @@ var todoFunctions = {
     // add an id to the newTodo. You can use the generateId function to create an id.
     // hint: array.concat
     // var newlistid = todoFunctions.generateId();
-    // todos.push(newlistid);
-    var newList = {
-                  'id':1,
-                   'description':'eat hotdog',
-                   'done': false
-                 }
+    // todos.push(newlistid
+    var newTodoArray = todoFunctions.cloneArrayOfObjects(todos)
+    var newList = {};
+    newList.id = todoFunctions.generateId();
+    newList.description = newTodo.description;
+    newList.done = newTodo.done;
 
-    return newList;
+    return newTodoArray.concat(newList);
 
   },
 
