@@ -17,6 +17,8 @@
     var todoNode = document.createElement('li');
     // you will need to use addEventListener
 
+
+
     // add span holding description
 
     // this adds the delete button
@@ -33,6 +35,9 @@
 
     return todoNode;
   };
+
+
+
 
   // bind create todo form
   if (addTodoForm) {
