@@ -34,5 +34,6 @@ test('Test for markTodo', function(t) {
   var actual = logic.markTodo([{"id":1,"description":"hello","done":false},{"id":2,"description":"hello","done":false}],1);
   var expected = [{"id":1,"description":"hello","done":true},{"id":2,"description":"hello","done":false}];
   t.deepEqual(actual,expected, "todo marked successfully");
+
   t.end();
 });
