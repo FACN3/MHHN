@@ -31,8 +31,8 @@ var todoFunctions = {
 var clonedtodos = todoFunctions.cloneArrayOfObjects(todos);
 
 newTodo.id = todoFunctions.generateId();
-clonedtodos.push(newTodo);
-return clonedtodos;
+return clonedtodos.concat(newTodo);
+
   },
 
 
