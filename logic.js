@@ -28,8 +28,15 @@ var todoFunctions = {
     // returns a new array, it should contain todos with the newTodo added to the end.
     // add an id to the newTodo. You can use the generateId function to create an id.
     // hint: array.concat
+    var newTodoList = todoFunctions.cloneArrayOfObjects(todos);
 
+    var newList = {}; //creating a new object
 
+    newList.id = todoFunctions.generateId();
+    newList.description = newTodo.description;
+    newList.done = newTodo.done;
+
+    return newTodoList.concat(newList);
   },
 
 
@@ -37,47 +44,33 @@ var todoFunctions = {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // return a new array, this should not contain any todo with an id of idToDelete
     // hint: array.filter
+    var deleteItem = todoFunctions.cloneArrayOfObjects(todos);
 
-    var clonedtodos = todoFunctions.cloneArrayOfObjects(todos);
+    deleteItem = todos.filter(function(obj){
+        return obj.id != idToDelete
+    });
 
-    for(var i=0; i<clonedtodos.length; i++){
-       if(clonedtodos[i].id == idToDelete){
-           clonedtodos.splice(i, 1);  //removes 1 todo at position i
-           break;
-       }
-   }
-
-return clonedtodos;
-
+    return deleteItem;
   },
   markTodo: function(todos, idToMark) {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // in the new todo array, all elements will remain unchanged except the one with id: idToMark
     // this element will have its done value toggled
     // hint: array.map
+    var markItem = todoFunctions.cloneArrayOfObjects(todos);
+    console.log(markItem);
+    markItem = todos.map(function(obj){
+      console.log('This is the obj: ', obj);
+        if(obj.id === idToMark){
+          obj.done = !obj.done;
+        }
+        return obj;
+    });
+    return markItem;
 
-var clonedtodos = todoFunctions.cloneArrayOfObjects(todos);
-
-clonedtodos.forEach(function(obj) {
-  if(obj.id == idToMark){
-    if(obj.done===false){
-      obj.done=true;
-    }
-    else {
-      obj.done=false
-    }
-
-  }
-
-});
-
-
-return clonedtodos;
 
 
   },
-
-
   sortTodos: function(todos, sortFunction) {
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)

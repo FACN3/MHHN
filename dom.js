@@ -6,26 +6,24 @@
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
 
-  var state = [
-    // { id: -3, description: 'first todo' },
-    // { id: -2, description: 'second todo' },
-    // { id: -1, description: 'third todo' },
-  ]; // this is our initial todoList
+  var state = []; // this is our initial todoList.
 
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
-    // you will need to use addEventListener
-  var button = document.getElementById('add');
-
-    button.addEventListener("click", todoFunctions.addTodo(state, todo.id));
 
 
 
     // add span holding description
 
+      var span = document.createElement("span");
+      span.textContent = todo.id + ". " + todo.description;
+      todoNode.appendChild(span);
+
+
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
+    deleteButtonNode.textContent = "Delete";
     deleteButtonNode.addEventListener('click', function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
@@ -34,13 +32,19 @@
 
     // add markTodo button
 
+    var markTodo = document.createElement('button');
+      markTodo.textContent = "mark";
+    markTodo.addEventListener('click', function(event){
+      var newMark = todoFunctions.markTodo(state, todo.id);
+      update(newMark);
+    });
+    todoNode.appendChild(markTodo);
+
+
     // add classes for css
 
     return todoNode;
   };
-
-
-
 
   // bind create todo form
   if (addTodoForm) {
@@ -48,11 +52,12 @@
       // https://developer.mozilla.org/en-US/docs/Web/Events/submit
       // what does event.preventDefault do?
       // what is inside event.target?
-
-      var description = '?'; // event.target ....
+      event.preventDefault();
+      var description = document.getElementById("add-todo")[0].value; // event.target ....
+      var obj = {"description":description,"done":false};
 
       // hint: todoFunctions.addTodo
-      var newState = []; // ?? change this!
+      var newState = todoFunctions.addTodo(state, obj); // ?? change this!
       update(newState);
     });
   }
