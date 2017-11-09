@@ -1,67 +1,10 @@
-
 body{
-  background: white;
+  background-color: #DAA520;
   text-align: center;
-  background-image: url("bg.jpg");
+  margin: 0 auto;
+  width: 100%;
 }
 
 ul{
-
-  width:300px
-  margin:0 auto;
-  list-style: none;
-  background: gray;
-  color: black;
-
-}
-li{
-  font-size: 30px;
-  text-emphasis: true;
-  font-family: serif;
-  text-align: left;
-  height: auto;
-
-
-
-
-}
-
-button{
-background: red;
-width: 100px;
-height: 30px;
-float: right;
-border-radius: 50%;
-font-size: 20px;
-
-
-}
-
-.check{
-
-  float: left;
-  width: 100px;
-
-}
-
-.inputform{
-  margin:0 auto;
-}
-
-li:nth-child(odd){
-  background-color:  #999966;
-  color: black;
-}
-
-.submit{
-  height: 50px;
-  width: 120px;
-  border-radius: 30%;
-  font-size: 30px;
-}
-
-.text{
-  height: 40px;
-  font-size: 30px;
-
+  list-style-type: none;
 }

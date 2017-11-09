@@ -6,49 +6,71 @@
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
 
-  var state = [
-    // { id: -3, description: 'first todo' },
-    // { id: -2, description: 'second todo' },
-    // { id: -1, description: 'third todo' },
-  ]; // this is our initial todoList
+  var state = []; // this is our initial todoList.
 
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
-    // you will need to use addEventListener
-    var input = document.createElement("INPUT");
-    input.setAttribute('type','checkbox');
-    input.setAttribute('class','check')
+    //style for list
+    todoNode.style.backgroundColor ="#FFE4B5";
+    todoNode.style.fontSize = "20px";
+    todoNode.style.width = "auto";
+    todoNode.style.borderRadius = "5px";
 
-    todoNode.appendChild(input);
 
-    input.addEventListener("click",function(event) {
 
-      var newState = todoFunctions.markTodo(state,todo.id);
 
-      console.log(newState);
-
-    });
-
-    todo.done ? input.checked = true : input.checked = false;
 
     // add span holding description
 
-var span = document.createElement("span");
-span.textContent = todo.description;
-todoNode.appendChild(span);
+      var span = document.createElement("span");
+      // span.textContent = todo.id + ". " + todo.description;
+      span.textContent = todo.description; //to only show the description once its been submited..no need for the id
+      //style the description
+      span.style.margin = "20px";
+      todoNode.appendChild(span);
+
+      // if the description is marked..change the color to red..if not keep it black
+      span.style.color = todo.done && "red" || "black";
+
+
+
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
-    deleteButtonNode.innerHTML = "Delete";
+    // Styling the delete button
+    deleteButtonNode.textContent = "Delete";
+    deleteButtonNode.style.backgroundColor = "#D93600";
+    deleteButtonNode.style.boxShadow = " 5px 5px 3px #888888";
+    deleteButtonNode.style.margin = "10px";
+    deleteButtonNode.style.marginLeft = "100px";
+    deleteButtonNode.style.padding = "5px";
+    deleteButtonNode.style.borderRadius = "5px";
+    deleteButtonNode.style.borderColor = "black";
+
     deleteButtonNode.addEventListener('click', function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
-
-
     todoNode.appendChild(deleteButtonNode);
 
-    // add markTodo button
+
+      /*********************** add markTodo button *********************************/
+    var markTodo = document.createElement('button');
+    markTodo.textContent = todo.done && "Unmark" || "Mark";
+      // Styling the mark button
+      // markTodo.textContent = "Mark";
+      markTodo.style.backgroundColor = "#FFD700";
+      markTodo.style.boxShadow = " 5px 5px 3px #888888";
+      markTodo.style.padding = "5px";
+      markTodo.style.borderRadius = "5px";
+      markTodo.style.borderColor = "black";
+
+    markTodo.addEventListener('click', function(event){
+      var newMark = todoFunctions.markTodo(state, todo.id);
+      console.log(newMark);
+      update(newMark);
+    });
+    todoNode.appendChild(markTodo);
 
     // add classes for css
 
@@ -64,21 +86,13 @@ todoNode.appendChild(span);
       // https://developer.mozilla.org/en-US/docs/Web/Events/submit
       // what does event.preventDefault do?
       // what is inside event.target?
-
       event.preventDefault();
-
-      var description = document.getElementById('add-todo')[0].value; // event.target ....
-      var newTodo = {"id":"","description":description,"done":false}
+      var description = document.getElementById("add-todo")[0].value; // event.target ....
 
       // hint: todoFunctions.addTodo
-      var newState = todoFunctions.addTodo(state,newTodo ); // ?? change this!
-      document.getElementById("add-todo")[0].value = "";
+      var newState = todoFunctions.addTodo(state, description); // ?? change this!
       update(newState);
-      console.log(newState);
-
     });
-
-
   }
 
   // you should not need to change this function

@@ -1,39 +1,74 @@
 var test = require('tape');
-var logic = require('./logic');
+var todoFunctions = require('./logic');
 
-var newTodo=[{
-  "id":"",
-  "description":"hello",
-  "done":false
-},{
-  "id":"",
-  "description":"hello",
-  "done":false
-}];
+var newTask = [{
+                'id': 1,
+                'description': 'hello',
+                'done': false
+                },
+                {'id': 2,
+                'description': 'bye',
+                'done': false
+                },
+                {
+                  'id': 3,
+                  'description': 'later',
+                  'done': true
+                  },
+                ];
 
+// var addTodo = logic.addTodo;
 
-test('Test for addTodo', function(t) {
-
-  var actual = logic.addTodo([],newTodo[0]);
-  var expected = [{"id":1,"description":"hello","done":false}];
-  t.deepEqual(actual,expected, "new todo created");
+test('Add test', function(t) {
+  var actual = [{'id':1, 'description': 'hello', 'done': false}];
+  var expected = todoFunctions.addTodo([], 'hello');
+  //t.pass();
+  t.deepEqual(actual, expected, 'this test should pass');
   t.end();
 });
 
-test('Test for deleteTodo', function(t) {
 
-  var actual = logic.deleteTodo([{"id":1,"description":"hello","done":false},{"id":2,"description":"hello","done":false}],1);
-  var expected = [{"id":2,"description":"hello","done":false}];
-  t.deepEqual(actual,expected, "todo deleted successfully");
+
+
+
+//DELETE
+
+test('Delete test', function(t) {
+  var actual = [{
+                  'id': 1,
+                  'description': 'hello',
+                  'done': false
+                  },
+                  {'id': 2,
+                  'description': 'bye',
+                  'done': false
+                  }];
+  var expected = todoFunctions.deleteTodo(newTask, newTask[2].id);
+  //t.pass();
+  t.deepEqual(actual, expected, 'this test should pass');
   t.end();
 });
 
 
-test('Test for markTodo', function(t) {
-
-  var actual = logic.markTodo([{"id":1,"description":"hello","done":false},{"id":2,"description":"hello","done":false}],1);
-  var expected = [{"id":1,"description":"hello","done":true},{"id":2,"description":"hello","done":false}];
-  t.deepEqual(actual,expected, "todo marked successfully");
-
+// MARK
+test('Mark test', function(t) {
+  var actual = [{
+                  'id': 1,
+                  'description': 'hello',
+                  'done': true
+                  },
+                  {'id': 2,
+                  'description': 'bye',
+                  'done': false
+                  },
+                  {
+                    'id': 3,
+                    'description': 'later',
+                    'done': true
+                    },
+                  ];
+  var expected = todoFunctions.markTodo(newTask, 1);
+  //t.pass();
+  t.deepEqual(actual, expected, 'this test should pass');
   t.end();
 });
