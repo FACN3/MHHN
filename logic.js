@@ -28,10 +28,10 @@ var todoFunctions = {
     // returns a new array, it should contain todos with the newTodo added to the end.
     // add an id to the newTodo. You can use the generateId function to create an id.
     // hint: array.concat
-var clonedtodos = todoFunctions.cloneArrayOfObjects(todos);
+
 
 newTodo.id = todoFunctions.generateId();
-return clonedtodos.concat(newTodo);
+return todos.concat(newTodo);
 
   },
 

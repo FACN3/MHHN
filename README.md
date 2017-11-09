@@ -12,7 +12,7 @@ This is a todo application with the following user stories.
 
 + Clone the Repo
 
-  `git clone <link to repo>`
+  `git clone <https://github.com/FACN3/MHHN.git>`
 
 + Install packages
 
