@@ -34,6 +34,3 @@ This is a todo application with the following user stories.
 [Hoslack](https://github.com/hoslack) :stuck_out_tongue_closed_eyes:
 
 [Haitham](https://github.com/haithhawk) :rage:
-
-
-**Contributors**
