@@ -22,4 +22,18 @@ This is a todo application with the following user stories.
 
   `npm run test`
 
-  **Link to github pages(demo)**
+
+  [Click here to try the Demo](https://facn3.github.io/MHHN/)
+
+**Contributors**
+
+[Nick](https://github.com/NickP123) :bowtie:
+
+[Marlen](https://github.com/MarlenAw)  :princess:
+
+[Hoslack](https://github.com/hoslack) :stuck_out_tongue_closed_eyes:
+
+[Haitham](https://github.com/haithhawk) :rage:
+
+
+**Contributors**
