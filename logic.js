@@ -18,58 +18,59 @@ var todoFunctions = {
   //cloneArrayOfObjects will create a copy of the todos array
   //changes to the new array don't affect the original
   cloneArrayOfObjects: function(todos) {
-    return todos.map(function(todo){
+    return todos.map(function(todo) {
       return JSON.parse(JSON.stringify(todo));
     });
   },
 
-  addTodo: function(todos, newTodo={}) {
+  addTodo: function(todos, newTodo) {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // returns a new array, it should contain todos with the newTodo added to the end.
     // add an id to the newTodo. You can use the generateId function to create an id.
     // hint: array.concat
+    var newTodoList = todoFunctions.cloneArrayOfObjects(todos);
 
+    var newList = {}; //creating a new object
 
-newTodo.id = todoFunctions.generateId();
-return todos.concat(newTodo);
+    newList.id = todoFunctions.generateId();
+    newList.description = newTodo;
+    newList.done = false;
 
+    return newTodoList.concat(newList);
   },
-
 
 
   deleteTodo: function(todos, idToDelete) {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // return a new array, this should not contain any todo with an id of idToDelete
     // hint: array.filter
+    var deleteItem = todoFunctions.cloneArrayOfObjects(todos);
 
-    var clonedtodos = todoFunctions.cloneArrayOfObjects(todos);
+    deleteItem = todos.filter(function(obj){
+        return obj.id != idToDelete
+    });
 
-
-
-return clonedtodos.filter(function(obj){
-  return obj.id!=idToDelete;
-});
-
+    return deleteItem;
   },
-
   markTodo: function(todos, idToMark) {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // in the new todo array, all elements will remain unchanged except the one with id: idToMark
     // this element will have its done value toggled
     // hint: array.map
+    var markItem = todoFunctions.cloneArrayOfObjects(todos);
+    console.log(markItem);
 
-var markItem = todoFunctions.cloneArrayOfObjects(todos);
-markItem = todos.map(function(obj){
-if(obj.id === idToMark){
-obj.done = !obj.done;
-}
-return obj;
-});
-return markItem;
+    markItem = todos.map(function(obj){
+
+        if(obj.id === idToMark){
+          obj.done = !obj.done;
+        }
+        return obj;
+    });
+
+    return markItem;
 
   },
-
-
   sortTodos: function(todos, sortFunction) {
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
@@ -83,6 +84,10 @@ return markItem;
 // The answer has something to do with needing to run code both in the browser and in Node.js
 // See this article for more details:
 // http://www.matteoagosti.com/blog/2013/02/24/writing-javascript-modules-for-both-browser-and-node/
+
+// ignore test...if theres no test for it..then just use ignore test so it wont pup up in the cmd under uncovered lines
+
+/* istanbul ignore next */
 if (typeof module !== 'undefined') {
   module.exports = todoFunctions;
 }
